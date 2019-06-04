@@ -1,0 +1,71 @@
+create database dbs
+use dbs
+
+
+
+create table Usuario(
+
+IDUsuario bigint,
+Nombre varchar(50),
+Apellido varchar(50),
+DireccionElectronica varchar(50),
+nickname varchar(20),
+contraseña varchar(20),
+
+constraint pk_IDUsuario primary key (IDUsuario)
+)
+ create table Producto(
+ Codigo_Producto bigint AUTO_INCREMENT,
+ Tipo_Producto varchar(50),
+ Precio double,
+ Descripcion_Producto varchar(100),
+ Cantidad_Stock int,
+
+constraint pk_Codigo_Producto primary key (Codigo_Producto)
+
+ )
+
+ create table Pago(
+ Codigo_Pago bigint AUTO_INCREMENT,
+ Concepto_Pago varchar(100),
+ Total_Pago double,
+ constraint pk_Codigo_Pago primary key (Codigo_Pago)
+
+ )
+
+ create table Reservar(
+
+ Codigo_Reserva bigint AUTO_INCREMENT,
+ Fecha_Reserva date,
+ Cantidad_Articulos int,
+ IDUsuario bigint,
+ Codigo_Producto bigint,
+
+ constraint pk_Codigo_Reserva primary key (Codigo_Reserva),
+ constraint fk_IDUsuario foreign key (IDUsuario) references Usuario(IDUsuario),
+ constraint fk_Codigo_Producto foreign key (Codigo_Producto) references Producto(Codigo_Producto)
+ 
+ )
+
+ create table Registro_de_Venta(
+ Codigo_Venta bigint AUTO_INCREMENT,
+ Cantidad int,
+ Fecha_venta date,
+ Codigo_Reserva bigint,
+
+ constraint pk_Codigo_Venta primary key (Codigo_Venta),
+ constraint fk_Codigo_Reserva foreign key (Codigo_Reserva ) references Reservar(Codigo_Reserva ),
+
+ )
+
+
+ create table Venta_Pago(
+ IDVenta_Pago bigint AUTO_INCREMENT,
+ Codigo_Venta bingint,
+ Codigo_Pago bigint,
+
+ constraint pk_IDVenta_Pago primary key (IDVenta_Pago ),
+ constraint fk_Codigo_Venta foreign key (Codigo_Venta ) references Registro_de_Venta(Codigo_Venta ),
+ constraint fk_Codigo_Pago foreign key (Codigo_Pago ) references Pago(Codigo_Pago ),
+ 
+ )
