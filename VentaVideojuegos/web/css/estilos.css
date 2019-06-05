@@ -17,10 +17,12 @@ body {
 .contenedor .form .form-header .form-title span {
 	color: #fff;
 }
+
+
 .contenedor .form {
   background: rgba(0,0,0,.6);
   width: 90%;
-  max-width: 650px;
+  max-width: 400px;
   margin: auto;
   padding: 50px 35px;
   margin-top: 30px;
@@ -43,11 +45,12 @@ body {
 	margin-bottom: 20px;
 	border-radius: 4px;
 	font-size: 14px;
-    color: #fff;
+        color: #fff;
 	font-family: Roboto;
 }
 .contenedor .form .btn-submit {
 	width: 100%;
+        border-radius: 10px;
 	font-family: Roboto;
 	outline: none;
 	background: #ff851b;
@@ -59,5 +62,8 @@ body {
 	transition: all .5s ease;
 }
 .contenedor .form .btn-submit:hover {
-	background: #F29718;
+	background: #000000;
+        border: 1.5px solid white;
+        
+        
 }

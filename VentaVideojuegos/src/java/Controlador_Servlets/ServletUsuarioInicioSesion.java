@@ -111,8 +111,8 @@ public class ServletUsuarioInicioSesion extends HttpServlet {
         }
         else
         {   
-            request.setAttribute("empleado", usuario);
-            request.getRequestDispatcher("BievenidoUsuario.jsp").forward(request,response);
+            request.setAttribute("usuario", usuario);
+            request.getRequestDispatcher("BienvenidoUsuario.jsp").forward(request,response);
             
         }
         
