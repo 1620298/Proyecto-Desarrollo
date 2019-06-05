@@ -9,28 +9,28 @@
 </head>
 <body> 
 	<div class="contenedor">
-		<form action="" class="form">
+            <form action="ServletUsuarioRegistrar" method="post" class="form">
 		<div class="form-header">
 			<h1 class="form-title">R<span>egistrate</span></h1>
 		</div>
 		<label for="nombre" class="form-label">Nombres:</label>
-		<input type="text" id="nombre" class="form-input" placeholder="Escriba su nombre">
+                <input type="text" name="nombre" id="nombre" class="form-input" placeholder="Escriba su nombre">
 
 		<label for="apellidos" class="form-label">Apellidos:</label>
-		<input type="text" id="apellidos" class="form-input" placeholder="Escriba su Apellido">
+		<input type="text" name="apellido" id="apellidos" class="form-input" placeholder="Escriba su Apellido">
 
 		
 
 		<label for="email" class="form-label">E-mail:</label>
-		<input type="text" id="email" class="form-input" placeholder="Escriba su E-mail">
+                <input type="text" name="email" id="email" class="form-input" placeholder="Escriba su E-mail">
 
 		<label for="alias" class="form-label">Nickname:</label>
-		<input type="text" id="alias" class="form-input" placeholder="Escriba su Nickname">
+                <input type="text" name="nickname" id="alias" class="form-input" placeholder="Escriba su Nickname">
 
 		<label for="contraseña" class="form-label">Contraseña:</label>
-		<input type="text" id="contraseña" class="form-input" placeholder="Escriba su Contraseña">
+                <input type="text" name="contra" id="contraseña" class="form-input" placeholder="Escriba su Contraseña">
 
-		<input type="submit" class="btn-submit" value="Registrar">
+                <input type="submit" name="registrar" class="btn-submit" value="Registrar">
 		</form>
 	</div>
 </body>

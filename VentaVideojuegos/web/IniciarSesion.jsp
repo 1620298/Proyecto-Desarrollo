@@ -20,7 +20,7 @@
 		<label for="contraseña" class="form-label">Contraseña:</label>
                 <input type="text" name="contra" id="contraseña" class="form-input" placeholder="Escriba su Contraseña">
 
-		<input type="submit" class="btn-submit" value="Registrar">
+                <input type="submit" name="iniciar" class="btn-submit" value="Registrar">
 		</form>
 	</div>
 </body>

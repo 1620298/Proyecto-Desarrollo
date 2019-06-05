@@ -5,11 +5,9 @@
  */
 package Controlador_Servlets;
 
-
 import DAO.DAOfactory;
 import DAO.UsuarioDAO;
 import DTO.UsuarioDTO;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,11 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * github.com/bladimirriltex/ProyectoWebIntegrado.git
+ *
  * @author MI PC
  */
-@WebServlet(name = "ServletUsuario", urlPatterns = {"/ServletUsuario"})
-public class ServletUsuario extends HttpServlet {
+@WebServlet(name = "ServletUsuarioRegistrar", urlPatterns = {"/ServletUsuarioRegistrar"})
+public class ServletUsuarioRegistrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +40,10 @@ public class ServletUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletUsuario</title>");            
+            out.println("<title>Servlet ServletUsuarioRegistrar</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServletUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServletUsuarioRegistrar at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -89,31 +87,24 @@ public class ServletUsuario extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-   
+
     
-    
-    protected void service(HttpServletRequest request, HttpServletResponse response) 
+     protected void service(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException 
     {
+        
+        String nombre=request.getParameter("nombre");
+        String apeliido=request.getParameter("apellido");
+        String email=request.getParameter("email");
         String nickname=request.getParameter("nickname");
         String contra=request.getParameter("contra");
         
         DAOfactory factory=DAOfactory.setDAOfactory(DAOfactory.MySQL);
         UsuarioDAO userDAO=factory.getUsuarioDAO();
         
-        UsuarioDTO usuario=userDAO.IniciarSesion(nickname, contra);
-        if(usuario==null)
-        {   
-            request.setAttribute("mensaje", "Error usuario y/o clave");
-            request.getRequestDispatcher("RegistrarUsuario.jsp").forward(request,response);
-            
-        }
-        else
-        {   
-            request.setAttribute("empleado", usuario);
-            request.getRequestDispatcher("BievenidoUsuario.jsp").forward(request,response);
-            
-        }
+       userDAO.RegistrarUsuario(nombre, apeliido, nickname, nickname, contra);
+        
+       request.getRequestDispatcher("BienvenidoUsuario.jsp").forward(request, response);
         
         
     }

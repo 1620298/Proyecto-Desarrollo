@@ -11,5 +11,5 @@ import DTO.UsuarioDTO;
  */
 public interface IUsuarioDAO {
     public UsuarioDTO IniciarSesion(String nick, String contra);
-    public UsuarioDTO RegistrarUsuario(String nombre, String apellido, String direccionE, String nick, String contra);
+    public boolean RegistrarUsuario(String nombre, String apellido, String direccionE, String nick, String contra);
 }

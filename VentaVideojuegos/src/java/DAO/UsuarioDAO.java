@@ -62,13 +62,40 @@ public class UsuarioDAO implements IUsuarioDAO{
     
 
     @Override
-    public UsuarioDTO RegistrarUsuario(String nombre, String apellido, String direccionE, String nick, String contra) {
-        return null;
+    public boolean RegistrarUsuario(String nombre, String apellido, String direccionE, String nick, String contra) {
+        Connection con;
+        PreparedStatement pstm=null;
+        
+        
+        try {
+            String insertar="INSERT INTO usuario (nombre,apellido,direccionelectronica,nickname,contra) VALUES (?,?,?,?,?);";
+            con=MySQLconexion.getConexion();
+            pstm=con.prepareStatement(insertar);
+            pstm.setString(1,nombre);
+            pstm.setString(2,apellido);
+            pstm.setString(3,direccionE);
+            pstm.setString(4,nick);
+            pstm.setString(5,contra);
+            
+            if(pstm.executeUpdate()==1){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                if(pstm!=null)pstm.close();
+            } catch (Exception e) {
+            }
+        }
+        
+        return false;
     }
-    public static void main(String[] args) {
+  /* public static void main(String[] args) {
         UsuarioDAO dao=new UsuarioDAO();
         
-        System.out.println(dao.IniciarSesion("edu","123"));
-    }
+        System.out.println(dao.RegistrarUsuario("karlo", "mollo", "123@gmail.com", "karlo", "123"));
+        System.out.println(dao.IniciarSesion("karlo","123"));
+    }*/
    
 }
