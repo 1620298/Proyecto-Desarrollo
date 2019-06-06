@@ -22,11 +22,12 @@
             
         <header>
 		<div class="wrapper">
-                    <div class="logo"><img src="img/uwunegro.jpg" alt="" height="100"/></div>
+                    <div class="logo"><a href="index.html"><img src="img/uwunegro.jpg" alt="" height="100"/></a></div>
+                    
                         
 			
 			<nav>
-				<a href="#">Inicio</a>
+                                <a href="index.html">Inicio</a>
 				<a href="#">Tienda</a>
 				<a href="#">Blog</a>
 				<a href="#">Preventa</a>

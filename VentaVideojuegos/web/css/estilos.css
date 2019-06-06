@@ -61,10 +61,12 @@ body {
 	padding: 15px 0;
 	cursor: pointer;
 	transition: all .5s ease;
+        margin-left: 12px;
 }
 .contenedor .form .btn-submit:hover {
 	background: #000000;
         border: 1.5px solid white;
+        margin-left: 12px;
         
         
 }
@@ -111,6 +113,7 @@ header nav a {
 }
  
 header nav a:hover {
+        margin-left: 12px;
 	background:#f56f3a;
 	border-radius:50px;
 }
@@ -138,13 +141,78 @@ header nav a:hover {
         background:#f56f3a;
 	border-radius:20px;
 }
-
+/*no teber*/
+p{
+   color: white; 
+    
+}
+p a{
+    text-decoration: none;
+    color: white;
+    
+}
+p a:hover{
+    text-decoration: none;
+    color:#f56f3a;
+}
 /*error*/
 .error{
     color: white;
     font-size: 20px;
 }
+.erronea{
+    background: rgba(0,0,0,.7);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    border-bottom: 3px solid red;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    
+    font-size: 14px;
+    color: #fff;
+    font-family: Roboto;
+    
+}
+#mensajeError{
+    color: white;
+    text-align: center;
+}
 
+.valido{
+        background: rgba(0,0,0,.7);
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #ff851b;
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	font-size: 14px;
+        color: #fff;
+	font-family: Roboto;
+}
+.boton .valido{
+    margin-left: 12px;
+    width: 100%;
+    border-radius: 10px;
+    font-family: Roboto;
+    outline: none;
+    background: #ff851b;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.boton .valido:hover{
+    alignment-adjust: central;
+    background: #000000;
+    border: 1.5px solid white;
+}
 /*datosusuario*/
 .datousuario{
     color: #f56f3a;
