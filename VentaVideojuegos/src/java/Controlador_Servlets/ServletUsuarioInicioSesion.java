@@ -106,7 +106,7 @@ public class ServletUsuarioInicioSesion extends HttpServlet {
         if(usuario==null)
         {   
             request.setAttribute("mensaje", "Error usuario y/o clave");
-            request.getRequestDispatcher("RegistrarUsuario.jsp").forward(request,response);
+            request.getRequestDispatcher("IniciarSesion.jsp").forward(request,response);
             
         }
         else

@@ -1,13 +1,21 @@
 <!DOCTYPE html>
+<%@include file="/header.jsp"%>
 <html lang="en">
 <head>
 	<title>Sign up</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
-	
+        
 </head>
 <body> 
+    
+    <%
+                        String x=(String) request.getAttribute("mensaje");
+                        String a="";
+                        if(x!=null)
+                            a=x;
+                    %>
 	<div class="contenedor">
             <form action="ServletUsuario" method="post" class="form">
 		<div class="form-header">
@@ -15,12 +23,13 @@
 		</div>
 		
 		<label for="alias" class="form-label">Nickname:</label>
-                <input type="text" name="nickname" id="alias" class="form-input" placeholder="Escriba su Nickname">
+                <input type="text" name="nickname" id="alias" class="form-input" placeholder="Escriba su Nickname" >
 
 		<label for="contraseña" class="form-label">Contraseña:</label>
-                <input type="text" name="contra" id="contraseña" class="form-input" placeholder="Escriba su Contraseña">
+                <input type="password" name="contra" id="contraseña" class="form-input" placeholder="Escriba su Contraseña">
 
                 <input type="submit" name="iniciar" class="btn-submit" value="Registrar">
+                <div class="error"><h5 align="center"><%=a %></h5></div>
 		</form>
 	</div>
 </body>

@@ -1,10 +1,11 @@
 
 
 body {
-   background-image: url("Fondo.jpg");
+   background-image: url("../img/Fondo.jpg");
    background-size: cover;
    background-position: center center;
    background-attachment: fixed;
+   font-family:  sans-serif;
 }
 
 .contenedor .form .form-header .form-title {
@@ -66,4 +67,128 @@ body {
         border: 1.5px solid white;
         
         
+}
+
+/*header*/
+header {
+	width:105%; /* Establecemos que el header abarque el 100% del documento */
+	overflow:hidden; /* Eliminamos errores de float */
+	background:black;
+	margin-bottom:20px;
+        height: 100px;
+}
+ 
+.wrapper {
+	width:90%; /* Establecemos que el ancho sera del 90% */
+	max-width:1000px; /* Aqui le decimos que el ancho máximo sera de 1000px */
+	margin:auto; /* Centramos los elementos */
+	overflow:hidden; /* Eliminamos errores de float */
+}
+ 
+header .logo {
+	color:#f2f2f2;
+	font-size:50px;
+	line-height:100px;
+	float:left;
+}
+ 
+header nav {
+	float:right;
+	line-height:100px;
+}
+ 
+header nav a {
+	display:inline-block;
+	color:#fff;
+	text-decoration:none;
+	padding:10px 20px;
+	line-height:normal;
+	font-size:20px;
+	font-weight:bold;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+ 
+header nav a:hover {
+	background:#f56f3a;
+	border-radius:50px;
+}
+
+.login{
+    
+    background-color: transparent;
+    float: right;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    color: white;
+    
+    
+    
+}
+
+.login a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.login a:hover{
+        
+        background:#f56f3a;
+	border-radius:20px;
+}
+
+/*error*/
+.error{
+    color: white;
+    font-size: 20px;
+}
+
+/*datosusuario*/
+.datousuario{
+    color: #f56f3a;
+    border: 1px solid #fff;
+    border-radius: 10px; 
+    width: 250px;
+    font-size: 30px;
+    background-color: #1B1B1B;
+    
+    
+}
+
+.datousuario h1{
+    display: inline;
+    margin-top:10px; 
+}
+
+.datousuario span{
+    
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    margin-top: 34px;
+    
+}
+.datousuario .cerrar{
+        width: 70%;
+        border-radius: 10px;
+	font-family: Roboto;
+	outline: none;
+	background: #ff851b;
+	font-size: 16px;
+	border: none;
+	color: #fff;
+	padding: 5px 10px;
+	cursor: pointer;
+        margin-left: 35px;
+        margin-bottom: 10px;
+	
+    
+}
+
+.datousuario .cerrar:hover{
+    background: #000000;
+    border: 1.5px solid white;
+    
 }

@@ -1,13 +1,51 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Tienda UwU</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="css/mi-slider.css" rel="stylesheet" type="text/css"/>
+        <link href="css/nivo-slider.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.2.0.min.js" type="text/javascript"></script>
+        <script src="js/jquery.nivo.slider.js" type="text/javascript"></script>
+	
+	<script type="text/javascript"> 
+		$(window).on('load', function() {
+			$('#slider').nivoSlider(); 
+		}); 
+	</script>
     </head>
     <body>
-        <div><h1>Aqui ira la pagina pricipal de pagina web</h1></div>
-        <a href="RegistrarUsuario.jsp">Ir a Registrarse</a>
-        <a href="IniciarSesion.jsp">Iniciar Sesion</a>
+        <div class="login">
+                <a href="IniciarSesion.jsp">Iniciar Sesion</a>
+                <a href="RegistrarUsuario.jsp">Registrarse</a>
+        </div>
+        
+            
+        <header>
+		<div class="wrapper">
+                    <div class="logo"><img src="css/uwunegro.jpg" alt="" height="100"/></div>
+                        
+			
+			<nav>
+				<a href="#">Inicio</a>
+				<a href="#">Servicios</a>
+				<a href="#">Proyectos</a>
+				<a href="#">Contacto</a>
+			</nav>
+		</div>
+	</header>
+        
+        <div class="slider-warpper theme-mi-slider"> 
+		<div id="slider" class="nivoSlider">     
+			<img src="img/1.jpg" alt="" />    
+			<img src="img/2.jpg" alt="" title="#htmlcaption" />     
+			<img src="img/3.jpg" alt="" title="<h1>Bienvenidos<h1>" />     
+		</div> 
+		<div id="htmlcaption" class="nivo-html-caption">      
+			<h1></h1>
+		</div>
+	</div>
     </body>
 </html>

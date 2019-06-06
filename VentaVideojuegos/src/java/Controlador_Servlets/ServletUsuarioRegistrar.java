@@ -103,8 +103,9 @@ public class ServletUsuarioRegistrar extends HttpServlet {
         UsuarioDAO userDAO=factory.getUsuarioDAO();
         
        userDAO.RegistrarUsuario(nombre, apeliido, nickname, nickname, contra);
-        
-       request.getRequestDispatcher("BienvenidoUsuario.jsp").forward(request, response);
+       request.setAttribute("mensaje","El registro fue exitoso!!"); 
+       request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
+      
         
         
     }
