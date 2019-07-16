@@ -25,7 +25,8 @@ public class MySQLconexion {
     public static  Connection getConexion(){
         Connection con=null;
         try {
-            con=DriverManager.getConnection("jdbc:mysql://localhost/ventavideojuegos","root","");
+            con=DriverManager.getConnection("jdbc:mysql://localhost/bdjuegos","root","");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,7 +34,7 @@ public class MySQLconexion {
     }
     
     
-    /***public static void main(String[] args) {
+   /* public static void main(String[] args) {
         getConexion();
     }*/
 }

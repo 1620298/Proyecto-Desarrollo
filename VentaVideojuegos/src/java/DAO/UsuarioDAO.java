@@ -19,7 +19,7 @@ import MySQLconector.MySQLconexion;
  */
 public class UsuarioDAO implements IUsuarioDAO{
     @Override
-    public UsuarioDTO IniciarSesion(String nickname, String contra){
+    public UsuarioDTO IniciarSesion(UsuarioDTO user){
         UsuarioDTO usuario=null;
         Connection con=null;
         ResultSet rs=null;
@@ -29,8 +29,8 @@ public class UsuarioDAO implements IUsuarioDAO{
             String consulta="select * from usuario where nickname=? and contra=?";
             con=MySQLconexion.getConexion();
             pstm=con.prepareStatement(consulta);
-            pstm.setString(1, nickname);
-            pstm.setString(2, contra);
+            pstm.setString(1, user.getNickname_usuario());
+            pstm.setString(2, user.getContrasenia());
             rs=pstm.executeQuery();
             
             if(rs.next()){
@@ -62,7 +62,7 @@ public class UsuarioDAO implements IUsuarioDAO{
     
 
     @Override
-    public boolean RegistrarUsuario(String nombre, String apellido, String direccionE, String nick, String contra) {
+    public boolean RegistrarUsuario(UsuarioDTO user) {
         Connection con;
         PreparedStatement pstm=null;
         
@@ -71,11 +71,11 @@ public class UsuarioDAO implements IUsuarioDAO{
             String insertar="INSERT INTO usuario (nombre,apellido,direccionelectronica,nickname,contra) VALUES (?,?,?,?,?);";
             con=MySQLconexion.getConexion();
             pstm=con.prepareStatement(insertar);
-            pstm.setString(1,nombre);
-            pstm.setString(2,apellido);
-            pstm.setString(3,direccionE);
-            pstm.setString(4,nick);
-            pstm.setString(5,contra);
+            pstm.setString(1,user.getNombre_usuario());
+            pstm.setString(2,user.getApellido_usuario());
+            pstm.setString(3,user.getDireccion_e_usuario());
+            pstm.setString(4,user.getNickname_usuario());
+            pstm.setString(5,user.getContrasenia());
             
             if(pstm.executeUpdate()==1){
                 return true;

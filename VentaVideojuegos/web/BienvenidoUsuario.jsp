@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : BievenidoUsuario
     Created on : 03-jun-2019, 22:18:11
     Author     : MI PC
@@ -18,12 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
-        <% UsuarioDTO usuario=(UsuarioDTO)request.getAttribute("usuario"); %>
-        
-        <div class="datousuario"><p><h1>B</h1><span>ienvenido:<br><%out.println(usuario.getNombre_usuario()+" "+usuario.getApellido_usuario()); %></span>
-                <input type="button" class="cerrar" value="Cerrar Sesion">
-        </div>
+        <p>entro</p>
         
     </body>
 </html>

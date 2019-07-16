@@ -28,7 +28,7 @@
 			
 			<nav>
                                 <a href="index.html">Inicio</a>
-				<a href="#">Tienda</a>
+                                <a href="Tienda.jsp">Tienda</a>
 				<a href="#">Blog</a>
 				<a href="#">Preventa</a>
 			</nav>

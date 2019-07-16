@@ -10,6 +10,6 @@ import DTO.UsuarioDTO;
  * @author MI PC
  */
 public interface IUsuarioDAO {
-    public UsuarioDTO IniciarSesion(String nick, String contra);
-    public boolean RegistrarUsuario(String nombre, String apellido, String direccionE, String nick, String contra);
+    public UsuarioDTO IniciarSesion(UsuarioDTO user);
+    public boolean RegistrarUsuario(UsuarioDTO user);
 }

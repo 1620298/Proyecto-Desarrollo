@@ -32,23 +32,6 @@ public class ServletUsuarioRegistrar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletUsuarioRegistrar</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletUsuarioRegistrar at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -88,25 +71,21 @@ public class ServletUsuarioRegistrar extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-     protected void service(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException 
-    {
-        
-        String nombre=request.getParameter("nombre");
-        String apeliido=request.getParameter("apellido");
-        String email=request.getParameter("email");
-        String nickname=request.getParameter("nickname");
-        String contra=request.getParameter("contra");
-        
-        DAOfactory factory=DAOfactory.setDAOfactory(DAOfactory.MySQL);
-        UsuarioDAO userDAO=factory.getUsuarioDAO();
-        
-       userDAO.RegistrarUsuario(nombre, apeliido, nickname, nickname, contra);
-       request.setAttribute("mensaje","El registro fue exitoso!!"); 
-       request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
-      
-        
-        
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        UsuarioDTO user = new UsuarioDTO();
+        user.setNombre_usuario(request.getParameter("nombre"));
+        user.setApellido_usuario(request.getParameter("apellido"));
+        user.setDireccion_e_usuario(request.getParameter("email"));
+        user.setNickname_usuario(request.getParameter("nickname"));
+        user.setContrasenia(request.getParameter("contra"));
+
+        DAOfactory factory = DAOfactory.setDAOfactory(DAOfactory.MySQL);
+        UsuarioDAO userDAO = factory.getUsuarioDAO();
+
+        userDAO.RegistrarUsuario(user);
+        request.setAttribute("mensaje", "El registro fue exitoso!!");
+        request.getRequestDispatcher("IniciarSesion.jsp").forward(request, response);
+
     }
 }
