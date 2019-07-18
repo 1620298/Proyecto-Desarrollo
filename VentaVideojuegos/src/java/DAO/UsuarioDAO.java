@@ -26,13 +26,13 @@ public class UsuarioDAO implements IUsuarioDAO{
         PreparedStatement pstm=null;
         
         try {
-            String consulta="select * from usuario where nickname=? and contra=?";
+            String consulta="select * from usuario where nickname=? and contraseña=?";
             con=MySQLconexion.getConexion();
             pstm=con.prepareStatement(consulta);
             pstm.setString(1, user.getNickname_usuario());
             pstm.setString(2, user.getContrasenia());
             rs=pstm.executeQuery();
-            
+            System.out.println("ingreso");
             if(rs.next()){
                 usuario=new UsuarioDTO();
                 usuario.setId_usuario(rs.getInt(1));
@@ -68,7 +68,7 @@ public class UsuarioDAO implements IUsuarioDAO{
         
         
         try {
-            String insertar="INSERT INTO usuario (nombre,apellido,direccionelectronica,nickname,contra) VALUES (?,?,?,?,?);";
+            String insertar="INSERT INTO usuario (Nombre,Apellido,DireccionElectronica,nickname,contraseña) VALUES (?,?,?,?,?);";
             con=MySQLconexion.getConexion();
             pstm=con.prepareStatement(insertar);
             pstm.setString(1,user.getNombre_usuario());
@@ -80,6 +80,7 @@ public class UsuarioDAO implements IUsuarioDAO{
             if(pstm.executeUpdate()==1){
                 return true;
             }
+            System.out.println("inserto");
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -91,11 +92,17 @@ public class UsuarioDAO implements IUsuarioDAO{
         
         return false;
     }
-  /* public static void main(String[] args) {
+   /*public static void main(String[] args) {
         UsuarioDAO dao=new UsuarioDAO();
+        UsuarioDTO dto=new UsuarioDTO();
         
-        System.out.println(dao.RegistrarUsuario("karlo", "mollo", "123@gmail.com", "karlo", "123"));
-        System.out.println(dao.IniciarSesion("karlo","123"));
+        dto.setNombre_usuario("karlo");
+        dto.setApellido_usuario("mollo");
+        dto.setDireccion_e_usuario("123@gmail.com");
+        dto.setNickname_usuario("karlo");
+        dto.setContrasenia("123");
+        System.out.println(dao.RegistrarUsuario(dto));
+        System.out.println(dao.IniciarSesion(dto));
     }*/
    
 }
