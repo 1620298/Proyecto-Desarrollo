@@ -4,7 +4,7 @@
     Author     : MI PC
 --%>
 
-<%@page import="Controlador.ControladorProducto"%>
+<%@page import="ProductosBD.ControladorProducto"%>
 <%@page import="DTO.UsuarioDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -12,6 +12,11 @@
 <%@include file="/header.jsp"%>
 <%
     ControladorProducto cp = new ControladorProducto();
+   
+   HttpSession sesionusuario = request.getSession(true);
+     
+    UsuarioDTO user = (UsuarioDTO) sesionusuario.getAttribute("usuario");
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -33,6 +38,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <div class="usuario"><i class="fa fa-user">  </i><%= user.getNombre_usuario()%></div>
+        
         <section>
             <div class="container">
                 <div class="row">
@@ -114,7 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div><!--/categoria-productos-->
 
                             <div class="brands_products">
@@ -126,12 +133,12 @@
                                         <li><a href=""> TECLADOS</a></li>
                                         <li><a href=""> TARJETAS DE SUSCRIPCIÓN</a></li>
                                         <li><a href=""> TIMONES</a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
                             <br>
-                            
+
                             <div class="brands_products">
                                 <h2>Articulos</h2>
                                 <div class="brands-name">
@@ -140,13 +147,13 @@
                                         <li><a href=""> FUNKO</a></li>
                                         <li><a href=""> COLECCIONABLES</a></li>
                                         <li><a href=""> AUDIO</a></li>
-                                       
-                                        
+
+
                                     </ul>
                                 </div>
                             </div>
 
-                            
+
 
 
 
@@ -172,13 +179,13 @@
                 </div>
             </div>
         </section>
-<%@include file="/Footer.jsp"%>
+        <%@include file="/Footer.jsp"%>
         <script src="js/jquery.js"></script>
-        
+
         <script src="js/jquery.scrollUp.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.prettyPhoto.js"></script>
         <script src="js/main.js"></script>
-        
+
     </body>
 </html>

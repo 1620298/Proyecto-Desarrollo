@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VentaJuegos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8349153-4fcb-4e2c-857f-4f914f829de9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_usuario" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     usuario.`Nombre` AS usuario_Nombre,
+     producto.`nombre` AS producto_nombre,
+     producto.`precio` AS producto_precio,
+     reservar.`Fecha_Reserva` AS reservar_Fecha_Reserva,
+     reservar.`Cantidad_Articulos` AS reservar_Cantidad_Articulos,
+     reservar.`preciototal` AS reservar_preciototal,
+     reservar.`Codigo_Reserva` AS reservar_Codigo_Reserva,
+     usuario.`IDUsuario` AS usuario_IDUsuario
+FROM
+     `producto` producto INNER JOIN `reservar` reservar ON producto.`id_producto` = reservar.`id_producto`
+     INNER JOIN `usuario` usuario ON reservar.`IDUsuario` = usuario.`IDUsuario`
+WHERE
+     usuario.IDUsuario = $P!{id_usuario}]]>
+	</queryString>
+	<field name="usuario_Nombre" class="java.lang.String"/>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="producto_precio" class="java.lang.Float"/>
+	<field name="reservar_Fecha_Reserva" class="java.sql.Date"/>
+	<field name="reservar_Cantidad_Articulos" class="java.lang.Integer"/>
+	<field name="reservar_preciototal" class="java.lang.Double"/>
+	<field name="reservar_Codigo_Reserva" class="java.lang.Long"/>
+	<field name="usuario_IDUsuario" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="156" y="46" width="208" height="20" uuid="64aeeda1-9cc4-4964-b48c-468345598923"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Reporte de Compra de Videojuegos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="-5" width="139" height="39" uuid="6229356e-a567-4952-83f4-de711b1456aa"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[UwU-Games]]></text>
+			</staticText>
+			<image>
+				<reportElement x="31" y="0" width="74" height="79" uuid="670b08cb-f8ee-4650-abd1-f75e1c5bfb13"/>
+				<imageExpression><![CDATA["D:\\trabajos de la u\\WEB-INT\\Proyecto-Desarrollo\\VentaVideojuegos\\web\\img\\uwu.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="420" y="14" width="100" height="20" uuid="91f548f8-d028-4e82-b855-1fafbfd0628a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="41" height="20" uuid="bbefef45-bb19-490a-85db-1b0611a22cd9"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="0" width="88" height="20" uuid="193cade9-65ff-4ab3-83bd-0d731b62ebf0"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="50" height="20" uuid="cbd17166-0d6d-4a03-b174-223fc88e894d"/>
+				<text><![CDATA[ID Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="0" width="100" height="20" uuid="322b3343-5440-4a38-922b-601e863d2240"/>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="2" width="85" height="20" uuid="cab19536-3317-4028-a574-c6327be758fa"/>
+				<text><![CDATA[Precio Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="2" width="48" height="20" uuid="a9dbc775-e979-4fef-815e-dc5e51836224"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="2" width="76" height="20" uuid="bd751b0a-bd83-4c42-8f69-d46f23ed5e53"/>
+				<text><![CDATA[sub-total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="31" height="20" uuid="f045fa01-1f34-45fe-90eb-e13046ab8af6"/>
+				<textFieldExpression><![CDATA[$F{reservar_Codigo_Reserva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="0" width="88" height="20" uuid="1466931d-f9f4-46d1-84e6-c42ec1bd9b47"/>
+				<textFieldExpression><![CDATA[$F{usuario_Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="35" height="20" uuid="ee938947-66fc-468b-accb-f18f32a86e77"/>
+				<textFieldExpression><![CDATA[$F{usuario_IDUsuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="0" width="100" height="20" uuid="6c3b8c8b-b6ea-454c-b8ed-4e5c218e7b1c"/>
+				<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="0" width="85" height="20" uuid="83b03df1-709e-41c3-b269-834a288c32d5"/>
+				<textFieldExpression><![CDATA[$F{producto_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="30" height="20" uuid="028937bd-12a9-49b3-8a60-f88ab417c292"/>
+				<textFieldExpression><![CDATA[$F{reservar_Cantidad_Articulos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="0" width="76" height="20" uuid="a559e0cf-4b99-44d7-9069-62a1930b66c2"/>
+				<textFieldExpression><![CDATA[$F{reservar_preciototal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="191" y="7" width="80" height="20" uuid="470fa870-6114-4ee8-b168-3ff446b1904a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="271" y="7" width="40" height="20" uuid="918abe90-e102-49dc-9790-c146972108b1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="5" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -5,10 +5,14 @@
  */
 package Controlador_Servlets;
 
+import DAO.ModeloProducto;
 import DTO.Articulo;
 import DTO.Producto;
+import DTO.UsuarioDTO;
 import ProductosBD.ControladorProducto;
 import java.io.IOException;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,13 +20,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author MI PC
  */
-@WebServlet(name = "DeleteItem", urlPatterns = {"/DeleteItem"})
-public class DeleteItem extends HttpServlet {
+@WebServlet(name = "Confirmar", urlPatterns = {"/Confirmar"})
+public class Confirmar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,32 +41,28 @@ public class DeleteItem extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        int idproducto = Integer.parseInt(request.getParameter("idproducto"));
-
         HttpSession sesion = request.getSession(true);
         ArrayList<Articulo> articulos = sesion.getAttribute("carrito") == null ? null : (ArrayList<Articulo>) sesion.getAttribute("carrito");
-        if (articulos != null) {
+        HttpSession sesionusuario = request.getSession(true);
+        UsuarioDTO user = (UsuarioDTO) sesionusuario.getAttribute("usuario");
 
-            for (Articulo a : articulos) {
-                if (idproducto == a.getIdProducto()) {
-                    articulos.remove(a);
-                    break;
-                }
-            }
-            
-            
+        java.util.Date date = new java.util.Date();
+
+// obtener la fecha y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha = dateFormat.format(date);
+        System.out.println("Fecha: " + fecha);
+
+        double total = 0;
+        ProductosBD.ControladorProducto cp = new ControladorProducto();
+        DAO.ModeloProducto mp = new ModeloProducto();
+        for (Articulo articulo : articulos) {
+            Producto producto = cp.getProducto(articulo.getIdProducto());
+            total = total + articulo.getCantidad() * producto.getPrecio();
+            mp.reservar(fecha, articulo.getCantidad(), user.getId_usuario(), producto.getId(), producto.getPrecio() * articulo.getCantidad());
         }
-        double total=0;
-        ControladorProducto cp=new ControladorProducto();
-        for (Articulo a : articulos) {
-               
-                    Producto producto=cp.getProducto(a.getIdProducto());
-                    total=total+a.getCantidad()*producto.getPrecio();
-                
-            }
-        response.getWriter().print(Math.round(total*100.0)/100.0);
-
+        mp.Pago(total);
+        request.getRequestDispatcher("Carrito.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

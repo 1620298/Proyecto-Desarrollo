@@ -6,7 +6,7 @@
 
 <%@page import="DTO.UsuarioDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%  UsuarioDTO user=(UsuarioDTO)request.getAttribute("usuario"); %>
+
 
 <%@include file="/header.jsp"%>
 
@@ -18,9 +18,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <p>entro <%= user.getNombre_usuario() %></p>
-        <p>entro <%= user.getApellido_usuario() %></p>
-        <p>entro <%= user.getDireccion_e_usuario() %></p>
-        <p>entro <%= user.getNickname_usuario() %></p>
+        <p>adsad</p>
+        <button><% 
+        Reportes.Reporte.pdf();
+        %>click</button>
+        
+      
     </body>
 </html>

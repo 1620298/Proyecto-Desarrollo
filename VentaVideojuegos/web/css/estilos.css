@@ -217,32 +217,11 @@ p a:hover{
     border: 1.5px solid white;
 }
 /*datosusuario*/
-.datousuario{
-    color: #f56f3a;
-    border: 1px solid #fff;
-    border-radius: 10px; 
-    width: 250px;
-    font-size: 30px;
-    background-color: #1B1B1B;
-    
-    
-}
 
-.datousuario h1{
-    display: inline;
-    margin-top:10px; 
-}
 
-.datousuario span{
-    
-    color: white;
-    position: absolute;
-    font-size: 20px;
-    margin-top: 34px;
-    
-}
-.datousuario .cerrar{
-        width: 70%;
+
+.usuario {
+        width: 10%;
         border-radius: 10px;
 	font-family: Roboto;
 	outline: none;
@@ -251,15 +230,10 @@ p a:hover{
 	border: none;
 	color: #fff;
 	padding: 5px 10px;
-	cursor: pointer;
-        margin-left: 35px;
+        margin-left: 100px;
         margin-bottom: 10px;
 	
     
 }
 
-.datousuario .cerrar:hover{
-    background: #000000;
-    border: 1.5px solid white;
-    
-}
+

@@ -4,6 +4,7 @@
     Author     : MI PC
 --%>
 
+<%@page import="DTO.UsuarioDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -15,27 +16,29 @@
     </head>
     <body>  
         <div class="login">
-                <a href="IniciarSesion.jsp">Iniciar Sesion</a>
-                <a href="RegistrarUsuario.jsp">Registrarse</a>
+
+            
+            <a href="IniciarSesion.jsp"><i class="fa fa-lock"></i> Iniciar Sesion</a>
+            <a href="RegistrarUsuario.jsp"><i class="fa fa-user"></i> Crear Cuenta</a>
         </div>
-        
-            
+
+
         <header>
-		<div class="wrapper">
-                    <div class="logo"><a href="index.html"><img src="img/uwunegro.jpg" alt="" height="100"/></a></div>
-                    
-                        
-			
-                    <nav class="nave">
-                                <a href="index.html">Inicio</a>
-                                <a href="Tienda.jsp">Tienda</a>
-				<a href="#">Blog</a>
-				<a href="#">Preventa</a>
-			</nav>
-		</div>
-	</header>
-			
-                    
-            
-	
+            <div class="wrapper">
+                <div class="logo"><a href="index.html"><img src="img/uwunegro.jpg" alt="" height="100"/></a></div>
+
+
+
+                <nav class="nave">
+                    <a href="index.html">Inicio</a>
+                    <a href="Tienda.jsp">Tienda</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Preventa</a>
+                </nav>
+            </div>
+        </header>
+
+
+
+
 

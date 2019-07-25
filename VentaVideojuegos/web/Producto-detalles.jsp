@@ -1,9 +1,12 @@
 
 <%@page import="DTO.Producto"%>
-<%@page import="Controlador.ControladorProducto"%>
+<%@page import="ProductosBD.ControladorProducto"%>
 <%
     int id = Integer.parseInt(request.getParameter("id"));
     Producto producto = new ControladorProducto().getProducto(id);
+    HttpSession sesionusuario = request.getSession(true);
+     
+    UsuarioDTO user = (UsuarioDTO) sesionusuario.getAttribute("usuario");
 %>
 <%@page import="DTO.UsuarioDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,6 +34,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <div class="usuario"><i class="fa fa-user">   </i><%= user.getNombre_usuario()%></div>
         <section>
             <div class="container">
                 <div class="row">
